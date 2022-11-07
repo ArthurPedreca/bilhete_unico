@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Bilhete Único</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class="centro">
+        <h2> Saldo do seu Cartão: </h2>
+        <input type="number" id="saldo" class="input">
+    </div>
+     
+    <div class="centro"> 
+        <h2> Seu gasto diário: </h2>
+        <input type="number" id="gasto" class="input">
+    </div>
+
+    <div class="centro">
+        <h2> Tempo que você pretende ter crédito (em dias): </h2>
+        <input type="number" id="tempo" class="input">
+        <input type="button" value="Calcular" id="teste" onclick="valor()" class="botão">
+    </div>
+    <p id="final"></p>
+
+    <script>
+        function valor(){
+   let saldo = (document.getElementById("saldo").value);
+   let gasto = (document.getElementById("gasto").value);
+   let tempo = (document.getElementById("tempo").value);
+
+   let recarganecesaria = saldo - (tempo*gasto)
+   document.getElementById("final").innerHTML=recarganecesaria.toFixed(2)
+
+   if(recarganecesaria < 0){
+    document.getElementById("final").innerHTML=  `Você precisa de mais: R$${Math.abs(recarganecesaria.toFixed(2))}`
+   }
+   else{
+    document.getElementById("final").innerHTML=  `Vai sobrar: R$${Math.abs(recarganecesaria.toFixed(2))}`
+   }
+}
+    </script>
+</body>
+</html>
